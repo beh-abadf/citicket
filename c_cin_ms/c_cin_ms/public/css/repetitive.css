@@ -1,0 +1,57 @@
+.center
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center2
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form_1 {
+    justify-content: content;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    width: 400px;
+    height: 450px;
+    z-index: 2;
+    box-shadow: 3px 3px 20px;
+}
+
+.ideal_size
+{
+    
+}
+
+.panel_around_form {
+    border: 1px;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: rgb(168, 168, 168);
+    width: 90%;
+    padding: 10px;
+}
+
+.pa_img
+{
+    border: 2px;
+    padding: 2px;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: white;
+}
+
+.per_fonts
+{
+    font-family: vazir;
+    text-align: right;
+}
