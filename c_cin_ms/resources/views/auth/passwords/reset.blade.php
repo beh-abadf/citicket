@@ -43,7 +43,7 @@
 
                                 <div class="col-md-6 per_fonts">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" autocomplete="new-password">
+                                        name="confirmed_password" autocomplete="new-password">
                                 </div>
                             </div>
 

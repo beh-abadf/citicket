@@ -1,0 +1,26 @@
+.button-free {
+    font-family: vazir;
+    font-size: 17px;
+    height: 100%;
+    width: 50px;
+    background-color: black;
+    color: white;
+}
+
+.button-free:hover {
+    font-family: vazir;
+    font-size: 17px;
+    color: black;
+    height: 100%;
+    width: 50px;
+    background-color: white;
+}
+
+.button-free:focus {
+    font-family: vazir;
+    font-size: 17px;
+    color: black;
+    height: 100%;
+    width: 50px;
+    background-color: white;
+}

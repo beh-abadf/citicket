@@ -10,7 +10,6 @@
     font-family: vazir;
 }
 
-
 .add_a_film_panel {
     justify-content: content;
     background-color: rgb(255, 255, 255);
@@ -28,8 +27,8 @@
     z-index: 2;
     box-shadow: 3px 3px 20px;
 }
-.add_a_film_panel>div.__1
-{
+
+.add_a_film_panel > div.__1 {
     position: relative;
     width: 100%;
 }

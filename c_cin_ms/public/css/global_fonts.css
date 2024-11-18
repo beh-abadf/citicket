@@ -1,0 +1,14 @@
+@font-face{
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir.ttf')format('truetype');
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../fonts/Shabnam.ttf')format('truetype');
+}
+
+@font-face {
+     font-family: 'IranianSans';
+    src: url('../fonts/IranianSans.ttf')format('truetype');
+}

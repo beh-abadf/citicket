@@ -1,28 +1,30 @@
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="bootstrap/css/ui.css" rel="stylesheet">
-    <link href="bootstrap/css/ui.js" rel="stylesheet">
-    <link rel="stylesheet" href="css/users_admin.css">
-    <link rel="stylesheet" href="css/panel_right.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\ui.css">
+    <link rel="stylesheet" href="css\common_styles.css">
+    <link rel="stylesheet" href="css\admin_styles.css">
+    <link rel="stylesheet" href="css\panel_right.css">
+    <link rel="stylesheet" href="css\users_admin.css">
 </head>
 
-<body class="bd_mn" style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right');
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left">
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
 
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     جدول کاربران
                 </div>
-                <div class="ch_4">
+                <div class="ch_3 flex-column">
                     <div class='bootstrap-table-1'>
                         <table class='table table-dark table-striped table-hover'>
                             <tr>
@@ -57,40 +59,40 @@
                                     شماره شناسایی
                                 </th>
                             </tr>
-                            @foreach ($users as $i)
+                            @foreach ($users as $item)
                                 <tr class="row_1">
                                     <td>
                                         <button class="btn btn-danger "
-                                            onclick="window.location.href='../deleteauser/{{ $i['id'] }}'">
-                                            <img src="icons/person-dash.svg" alt="بیرون کردن حذف اطلاعات کاربر">
+                                            onclick="window.location.href='../deleteauser/{{ $item['id'] }}'">
+                                            <img src="icons\person-dash.svg" alt="بیرون کردن حذف اطلاعات کاربر">
                                         </button>
                                     </td>
                                     <td>
-                                        {{ $i['name'] }}
+                                        {{ $item['name'] }}
                                     </td>
                                     <td>
-                                        {{ $i['email'] }}
+                                        {{ $item['email'] }}
                                     </td>
                                     <td>
-                                        {{ $i['date_registered'] }}
+                                        {{ $item['date_registered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['day_registered'] }}
+                                        {{ $item['day_registered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['time_registered'] }}
+                                        {{ $item['time_registered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['date_login'] }}
+                                        {{ $item['date_entered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['day_login'] }}
+                                        {{ $item['day_entered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['time_login'] }}
+                                        {{ $item['time_entered'] }}
                                     </td>
                                     <td>
-                                        {{ $i['id'] }}
+                                        {{ $item['id'] }}
                                     </td>
                                 </tr>
                             @endforeach

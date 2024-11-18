@@ -1,35 +1,36 @@
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/films_admin.css">
-    <link rel="stylesheet" href="bootstrap/css/ui.css">
-    <link rel="stylesheet" href="css/add_a_place.css">
-    <link rel="stylesheet" href="css/panel_right.css">
-    <script src='../../js/jquery.js'></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\ui.css">
+    <link rel="stylesheet" href="css\common_styles.css">
+    <link rel="stylesheet" href="css\admin_styles.css">
+    <link rel="stylesheet" href="css\panel_right.css">
+    <link rel="stylesheet" href="css\add_a_place.css">
 </head>
 
-<body class="bd_mn" style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right');
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left">
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     مکان جدید
                 </div>
                 <div class="mt-2">
-                    @include('errors/visualize_error')
+                    @include('errors\visualize_error')
                 </div>
-                <div class="ch_4">
-                    <div class="ch_4_1">
-                        <div class="add_a_place_panel">
+                <div class="ch_3 flex-row center">
+                    <div class="ch_3_1 flex-column center">
+                        <div class="add_a_place_panel center">
                             <div id="fr_lf">
-                                <form action="addaplace" method="POST" class="form-control"
+                                <form action="add-a-cinema" method="POST" class="form-control"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <label for="name">نام مکان:</label>
@@ -74,7 +75,8 @@
             </div>
         </div>
     </div>
-    <script src="../../js/fetch_place_records.js"></script>
+    <script src="js\jquery.js"></script>
+    <script src="js\fetch_place_records.js"></script>
 </body>
 
 </html>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-require_once 'php/jdf.php';
-
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+require_once 'php/jdf.php';
 
 class RegisterController extends Controller
 {
@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = "../";
+    protected $redirectTo = '../';
 
     /**
      * Create a new controller instance.
@@ -54,7 +54,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
+            'confirmed_password' => ['required', 'string', 'min:8', 'same:password'],
         ]);
     }
 

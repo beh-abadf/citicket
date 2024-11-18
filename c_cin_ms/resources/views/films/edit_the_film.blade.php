@@ -1,35 +1,36 @@
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/films_admin.css">
-    <link rel="stylesheet" href="../bootstrap/css/ui.css">
-    <link rel="stylesheet" href="../css/edit_a_film.css">
-    <link rel="stylesheet" href="../css/panel_right.css">
-    <script src="js/jquery.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\ui.css">
+    <link rel="stylesheet" href="..\css\common_styles.css">
+    <link rel="stylesheet" href="..\css\admin_styles.css">
+    <link rel="stylesheet" href="..\css\panel_right.css">
+    <link rel="stylesheet" href="..\css\edit_the_film.css">
 </head>
 
-<body style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right');
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left flex-column'">
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     ویرایش یک فیلم
                 </div>
                 <div class="mt-2">
-                    @include('errors/visualize_error')
+                    @include('errors\visualize_error')
                 </div>
-                <div class="ch_4">
+                <div class="ch_3 flex-column">
                     <div>
-                        <div class="add_a_film_panel">
+                        <div class="edit_the_film_panel flex-row center">
                             <div id="fr_lf">
-                                <form id="submit_form" action="../updatethefilm/{{$row->id}}" method="POST" class="form-control"
+                                <form id="submit_form" action="../update-the-film-information/{{$row->id}}" method="POST" class="form-control"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <label for="name">نام فیلم:</label><br>
@@ -163,7 +164,8 @@
             </div>
         </div>
     </div>
-    <script src="js/message_cleaner.js"></script>
+    <script src="js\jquery.js"></script>
+    <script src="js\message_cleaner.js"></script>
 </body>
 
 </html>

@@ -38,6 +38,8 @@ class Email extends Mailable
         if ($this->message_selection == 1) {
             return $this->subject('خوش آمدید')->view('welcome_message', ['name' => $this->name]);
         }
-        return $this->subject('فراموشی رمز عبور')->view('forgetting_password_message', ['code' => $this->random_code]);
+        return $this->subject('فراموشی رمز عبور')
+            ->view('user_services\forgetten_password_message')
+            ->with('code', $this->random_code);
     }
 }

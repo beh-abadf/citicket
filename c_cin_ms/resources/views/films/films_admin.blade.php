@@ -1,31 +1,34 @@
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="bootstrap/css/ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/films_admin.css">
-    <link rel="stylesheet" href="css/panel_right.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\ui.css">
+    <link rel="stylesheet" href="css\common_styles.css">
+    <link rel="stylesheet" href="css\admin_styles.css">
+    <link rel="stylesheet" href="css\panel_right.css">
+    <link rel="stylesheet" href="css\films_admin.css">
 </head>
 
-<body class="bd_mn" style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right');
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left">
             @if (session('reg_al'))
                 <div alert alert-succes>
                     شما قبلا ورود کرده اید
                 </div>
             @endif
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     جدول فیلم ها
                 </div>
-                <div class="ch_4">
+                <div class="ch_3 flex-column">
                     <div class='bootstrap-table-1'>
                         <table class='table table-dark table-striped table-hover'>
                             <tr>
@@ -68,61 +71,61 @@
                                     نام تصویر فیلم
                                 </th>
                             </tr>
-                            @foreach ($data as $i)
+                            @foreach ($data as $item)
                                 <tr class="row_1">
                                     <td>
                                         <div class="btn btn-danger"
-                                            onclick="window.location.href='./delete_an_item/{{ $i->id }}'">
+                                            onclick="window.location.href='./delete-the-film/{{ $item->id }}'">
                                             <img src="icons/trash.svg">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="btn btn-warning"
-                                            onclick="window.location.href='./editafilm/{{ $i->id }}'">
-                                            <img src="icons/pencil-square.svg">
+                                            onclick="window.location.href='./init-values-of-the-film-edition/{{ $item->id }}'">
+                                            <img src="icons\pencil-square.svg">
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $i->film_name }}
+                                        {{ $item->film_name }}
                                     </td>
                                     <td>
-                                        {{ $i->running_time }}
+                                        {{ $item->running_time }}
                                     </td>
                                     <td>
-                                        {{ $i->director_name }}
+                                        {{ $item->director_name }}
                                     </td>
                                     <td>
-                                        {{ $i->ex_producer }}
+                                        {{ $item->ex_producer }}
                                     </td>
                                     <td>
-                                        <a href="{{ $i->more_about }}" style="color: white">
+                                        <a href="{{ $item->more_about }}" style="color: white">
                                             <div class="btn btn-primary">
                                                 ...
                                             </div>
                                         </a>
                                     </td>
                                     <td>
-                                        {{ $i->country }}
+                                        {{ $item->country }}
                                     </td>
                                     <td>
-                                        {{ $i->language }}
+                                        {{ $item->language }}
                                     </td>
                                     <td>
-                                        {{ $i->price_of_film }}
+                                        {{ $item->price_of_film }}
                                     </td>
                                     <td>
-                                        {{ $i->id }}
+                                        {{ $item->id }}
                                     </td>
                                     <td>
-                                        <a href="{{ $i->film_iframe }}" style="color: white">
+                                        <a href="{{ $item->film_iframe }}" style="color: white">
                                             <div class="btn btn-primary">
                                                 ###
                                             </div>
                                         </a>
                                     </td>
                                     <td>
-                                        {{ $i->image_name }}
-                                    </td>ّ
+                                        {{ $item->image_name }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

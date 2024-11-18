@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 require_once 'php/jdf.php';
+require_once 'php/convert_to_persian.php';
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
@@ -32,7 +33,7 @@ class NewsController extends Controller
             'news' => $this->news
         ]);
     }
-    public function ShowNews()
+    public function NewsUser()
     {
         $tableData = News::all();
         $rows = 0;
@@ -42,11 +43,11 @@ class NewsController extends Controller
         if ($count <= 3) {
             $box_numbers = $count;
         } else {
-            $rows = (int)($count / 3);
+            $rows = (int) ($count / 3);
             $count = $count % 3;
             $box_numbers = $count;
         }
-        return view('news/news_user', [
+        return view('news\\news_user', [
             'data' => $tableData,
             'data_index' => $total_data,
             'rows' => $rows,
@@ -55,65 +56,67 @@ class NewsController extends Controller
     }
     public function NewsAdmin()
     {
-        return $this->FirstConfiguration("news/news_admin");
+        return $this->FirstConfiguration("news\\news_admin");
     }
     public function AddNews(Request $input_request)
     {
         $this->Validate_($input_request);
-       
-            $file_exists = $input_request['file_'];
-            if ($file_exists !== null) {
-                $file = $input_request->file('file_');
-                $fileName = $file->getClientOriginalName();
-                $file->storeAs('public\news_images', $fileName);
-            }
-            News::create([
-                'news' => strip_tags($input_request['news']),
-                'news_images' => $fileName,
-                'date_created' => jdate('y/m/d'),
-                'day_created' => jdate('l'),
-                'time_created' => jdate('g:i:s')
-            ]);
-            return redirect('newsadmin');     
+
+        $file_exists = $input_request['file_'];
+        if ($file_exists !== null) {
+            $file = $input_request->file('file_');
+            $fileName = $file->getClientOriginalName();
+            $file->storeAs('public\news_images\\', $fileName);
+        }
+        $tempVar = trim(strip_tags($input_request['news']));
+        News::create([
+            'news' => convert_nums_persian($tempVar),
+            'news_images' => $fileName,
+            'date_created' => jdate('y/m/d'),
+            'day_created' => jdate('l'),
+            'time_created' => jdate('g:i:s')
+        ]);
+        return redirect('news-admin');
     }
     public function EditNews($id)
     {
         $rowHasBeenSelected = News::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
             $rowHasBeenGotten = $rowHasBeenSelected->first();
-            return view('news/edit_news', [
+            return view('news\\edit_news', [
                 'news' => $rowHasBeenGotten,
             ]);
         }
         return redirect('error');
     }
-    public function UpdateNewsInformation(Request $input_request, $id)
+    public function UpdateNews(Request $input_request, $id)
     {
         $this->Validate_($input_request);
-        
-            $information = News::where('id', '=',  $id);
-            $file_exists = $input_request['file_'];
-            if ($file_exists !== null) {
 
-                $file = $input_request->file('file_');
-                $fileName = $file->getClientOriginalName();
-                $information_gotten = $information->get();
-                File::delete('storage\news_images\\' . $information_gotten[0]->news_images);
-                $file->storeAs('public\news_images', $fileName);
-                $information
-                    ->update([
-                        'news_images' => $fileName,
-                    ]);
-            }
+        $information = News::where('id', '=', $id);
+        $file_exists = $input_request['file_'];
+        if ($file_exists !== null) {
+
+            $file = $input_request->file('file_');
+            $fileName = $file->getClientOriginalName();
+            $information_gotten = $information->get();
+            File::delete('storage\news_images\\' . $information_gotten[0]->news_images);
+            $file->storeAs('public\news_images\\', $fileName);
             $information
                 ->update([
-                    'news' => strip_tags($input_request['news']),
-                    'date_updated' => jdate('y/m/d'),
-                    'day_updated' => jdate('l'),
-                    'time_updated' => jdate('g:i:s')
+                    'news_images' => $fileName,
                 ]);
-            return redirect('newsadmin');
-        
+        }
+        $tempVar = trim(strip_tags($input_request['news']));
+        $information
+            ->update([
+                'news' => convert_nums_persian($tempVar),
+                'date_updated' => jdate('y/m/d'),
+                'day_updated' => jdate('l'),
+                'time_updated' => jdate('g:i:s')
+            ]);
+        return redirect('news-admin');
+
     }
     public function DeleteNews($id)
     {
@@ -122,7 +125,7 @@ class NewsController extends Controller
             $rowHasBeenGotten = $rowHasBeenSelected->first();
             File::delete('storage\news_images\\' . $rowHasBeenGotten->news_images);
             $rowHasBeenSelected->delete();
-            return redirect('newsadmin');
+            return redirect('news-admin');
         }
         return redirect('error');
     }

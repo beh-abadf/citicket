@@ -1,4 +1,4 @@
-<div class="d1 p">
+<div class="d1 p flex-column">
     <img src="storage/films_images/{{$data[$index]['image_name'] }}" alt="تصویر ندارد">
 </div>
 <div class="d2">
@@ -8,7 +8,7 @@
 </div>
 <div class="d3">
     <p>
-        <a href="buybill/{{ $data[$index] }}">
+        <a href="buy-bill/{{ $data[$index] }}">
             ...اطلاعات بیشتر
         </a>
     </p>

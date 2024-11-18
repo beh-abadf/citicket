@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-require_once 'php/convert_to_persian.php';
 require_once 'php/jdf.php';
+require_once 'php/convert_to_persian.php';
+
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
@@ -14,6 +15,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use Auth;
 
 use function PHPUnit\Framework\isNull;
 
@@ -56,13 +59,13 @@ class FilmsController extends Controller
     {
         return $this->FirstConfiguration('films/films_admin');
     }
-    public function AddAFilmFirstInit()
+    public function InitialValuesForTheFilmAddition()
     {
         return $this->FirstConfiguration('films/add_a_film');
     }
     public function ShowList()
     {
-        $tableData =  $this->data;
+        $tableData = $this->data;
         $rows = 0;
         $box_numbers = 0;
         $count = $tableData->count();
@@ -70,7 +73,7 @@ class FilmsController extends Controller
         if ($count <= 4) {
             $box_numbers = $count;
         } else {
-            $rows = (int)($count / 4);
+            $rows = (int) ($count / 4);
             $count = $count % 4;
             $box_numbers = $count;
         }
@@ -78,7 +81,7 @@ class FilmsController extends Controller
         return view('films/films_user', [
             'data' => $tableData,
             'data_index' => $total_data,
-            'b_i' =>  $b_i,
+            'b_i' => $b_i,
             'rows' => $rows,
             'box_numbers' => $box_numbers,
         ]);
@@ -114,7 +117,7 @@ class FilmsController extends Controller
             'country' => $input_request['cny'],
             'language' => $input_request['language'],
             'price_of_film' => convert_nums_persian($input_request['price']),
-            'film_iframe' => str_replace('"','',$input_request['ifr']),
+            'film_iframe' => str_replace('"', '', $input_request['ifr']),
             'film_of_ids' => json_encode($film_of_idsAr),
             'salon' => json_encode($salonAr),
             'day' => json_encode($dayAr),
@@ -123,21 +126,21 @@ class FilmsController extends Controller
             'date_created' => jdate('y/m/d'),
             'day_created' => jdate('l'),
             'time_created' => jdate('g:i:s')
-        ]);                   
-        return redirect('filmsadmin');
+        ]);
+        return redirect('films-admin');
     }
-    public function EditAFilm($id)
+    public function InitialValuesForTheFilmEdition($id)
     {
         $rowHasBeenSelected = Film::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
             $rowHasBeenGotten = $rowHasBeenSelected->first();
-            return view('films/edit_a_film', [
+            return view('films/edit_the_film', [
                 'row' => $rowHasBeenGotten,
                 'places' => $this->places,
                 'provinces' => $this->provinces,
             ]);
         }
-        return  redirect('error');
+        return redirect('error');
     }
     public function UpdateTheFilmInformation(Request $input_request, $id)
     {
@@ -147,10 +150,10 @@ class FilmsController extends Controller
             ]
         );
         $file_ = $input_request['file_']->getClientOriginalName();
-        Film::where('id', '=',  $id)
+        Film::where('id', '=', $id)
             ->update([
                 'film_name' => $input_request['name'],
-                'running_time' =>  $input_request['duration'],
+                'running_time' => $input_request['duration'],
                 'director_name' => $input_request['director'],
                 'ex_producer' => $input_request['ex_producer'],
                 'country' => $input_request['cny'],
@@ -159,7 +162,7 @@ class FilmsController extends Controller
                 'day' => $input_request['day'],
                 'time' => $input_request['time'],
                 'more_about' => $input_request['about'],
-                'film_iframe' => str_replace('"','',$input_request['ifr']),
+                'film_iframe' => str_replace('"', '', $input_request['ifr']),
                 'image_name' => $file_,
                 'date_updated' => jdate('y/m/d'),
                 'day_updated' => jdate('l'),
@@ -170,7 +173,7 @@ class FilmsController extends Controller
             $fileName = $file->getClientOriginalName();
             $file->storeAs('public\films_images\\', $fileName);
         }
-        return redirect('filmsadmin');
+        return redirect('films-admin');
     }
     public function DeleteAFilm($id)
     {
@@ -179,8 +182,8 @@ class FilmsController extends Controller
             $rowHasBeenGotten = $rowHasBeenSelected->get();
             File::delete('storage\film_images\\' . $rowHasBeenGotten[0]->image_name);
             $rowHasBeenSelected->delete();
-            return redirect('filmsadmin');
+            return redirect('films-admin');
         }
-        return  redirect('error');
+        return redirect('error');
     }
 }

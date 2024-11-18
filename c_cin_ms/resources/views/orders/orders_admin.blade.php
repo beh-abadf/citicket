@@ -1,27 +1,30 @@
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="bootstrap/css/ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/films_admin.css">
-    <link rel="stylesheet" href="css/panel_right.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\ui.css">
+    <link rel="stylesheet" href="css\common_styles.css">
+    <link rel="stylesheet" href="css\admin_styles.css">
+    <link rel="stylesheet" href="css\panel_right.css">
+    <link rel="stylesheet" href="css\orders_admin.css">
 </head>
 
-<body class="bd_mn" style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right')
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left">
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
 
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     سفارشات
                 </div>
-                <div class="ch_4">
+                <div class="ch_3 flex-column">
                     <div class='bootstrap-table-1'>
                         <table class='table table-dark table-striped table-hover'>
                             <tr>
@@ -41,7 +44,7 @@
                                     کد فیلم
                                 </th>
                                 <th>
-                                    تاریخ خرید 
+                                    تاریخ خرید
                                 </th>
                                 <th>
                                     روز خرید
@@ -53,39 +56,39 @@
                                     کد سفارش
                                 </th>
                             </tr>
-                            @foreach ($orders as $i)
+                            @foreach ($orders as $item)
                                 <tr class="row_1">
                                     <td>
                                         <button class="btn btn-danger "
-                                            onclick="window.location.href='./deleteanorder/{{ $i->id }}'">
-                                            <img src="icons/trash.svg">
+                                            onclick="window.location.href='./delete-the-order/{{ $item->id }}'">
+                                            <img src="icons\trash.svg">
                                         </button>
                                     </td>
                                     <td>
-                                        {{ $i['who_ordered_name'] }}
+                                        {{ $item['who_ordered_name'] }}
                                     </td>
                                     <td>
-                                        {{ $i['who_ordered_id'] }}
+                                        {{ $item['who_ordered_id'] }}
                                     </td>
 
                                     <td>
-                                        {{ $i['order_name'] }}
+                                        {{ $item['order_name'] }}
                                     </td>
                                     <td>
-                                        {{ $i['film_id'] }}
+                                        {{ $item['film_id'] }}
                                     </td>
                                     <td>
-                                        {{ $i['date_created'] }}
+                                        {{ $item['date_created'] }}
                                     </td>
                                     <td>
-                                        {{ $i['day_created'] }}
+                                        {{ $item['day_created'] }}
                                     </td>
                                     <td>
-                                        {{ $i['time_created'] }}
+                                        {{ $item['time_created'] }}
                                     </td>
                                     <td>
-                                        {{ $i['id'] }}
-                                    </td>ّ
+                                        {{ $item['id'] }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

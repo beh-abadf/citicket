@@ -17,6 +17,7 @@ class UsersController extends Controller
     private $places_and_city;
     function __construct()
     {
+        $this->middleware('auth');
         $this->members = User::all();
     }
     public function UsersAdmin()
@@ -30,7 +31,7 @@ class UsersController extends Controller
         $rowHasBeenSelected = User::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
             $rowHasBeenSelected->delete();
-            return redirect("usersadmin");
+            return redirect("users-admin");
         }
         return redirect('error');
     }

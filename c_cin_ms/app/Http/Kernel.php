@@ -60,10 +60,10 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'entered'=> \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth_2' => \App\Http\Middleware\AuthUser::class,
-        'hasbill' => \App\Http\Middleware\HasBoughtBill::class,
+        'has_bill' => \App\Http\Middleware\HasBill::class,
     ];
 }

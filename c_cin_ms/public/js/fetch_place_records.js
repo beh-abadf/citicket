@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function fetchCityRecords(here_id) {
     $.ajax({
-        url: "selectacity/" + here_id,
+        url: "select-a-city/" + here_id,
         type: "GET",
         dataType: 'JSON',
         success: function (response) {

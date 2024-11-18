@@ -1,58 +1,35 @@
-.main_body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: vazir;
-    font-size: 20px;
+.parent > div:nth-child(1) {
+    width: 70%;
+    height: 100%;
 }
 
-.main_body>div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    margin-top: 20px;
-    justify-content: center;
-    height: 100%;
+#bill_panel {
+    height: 90%;
     width: 100%;
 }
 
-.main_body>div>div {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    position: relative;
-    justify-content: center;
+#bill_panel > div{
     height: 100%;
+}
+
+.pdf_c {
     width: 100%;
-}
-
-.main_body>div>div>div.r1 {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    height: 100%;
-    width: 50%;
-}
-.main_body>div>div>div.r3 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    height: 100%;
-    width: 50%;
-}
-.main_body>div>.l1 {
-    height: 2px;
-    width: 60%;
-    background-color: black;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 255, 255);
 }
 
+h4 {
+    margin-top: 10px;
+    color: white;
+}
 
-p {
-    text-align: right;
-    margin-top: 20px;
+.pdf_c > p:nth-child(1) {
+    margin-left: 50px;
+}
+
+#pdf_butt {
+    margin: 5px;
 }

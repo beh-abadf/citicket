@@ -1,70 +1,93 @@
-<html lang="fa">
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/films_admin.css">
-    <link rel="stylesheet" href="../bootstrap/css/ui.css">
-    <link rel="stylesheet" href="../css/add_a_film.css">
-    <link rel="stylesheet" href="../css/panel_right.css">
-    <link rel="stylesheet" href="../css/repetitive.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\ui.css">
+    <link rel="stylesheet" href="css\common_styles.css">
+    <link rel="stylesheet" href="css\admin_styles.css">
+    <link rel="stylesheet" href="css\panel_right.css">
+    <link rel="stylesheet" href="\css\add_a_film.css">
 </head>
 
-<body class="bd_mn center" style="direction: rtl;">
-    <div class="div_mn">
-        @include('ui/panel_right');
-        <div class="panel-right">
+<body class="flex-column center">
+    <div class="div_mn flex-row">
+        @include('ui\panel_right')
+        <div class="panel-left">
             <div class='parent'>
-                <div class="ch_1">
+                <div class="ch_1 flex-column">
                     <div class="ch_1_1">
                     </div>
                 </div>
-                <div class="ch_3">
+                <div class="ch_2 flex-column center">
                     فیلم جدید
                 </div>
                 <div class="mt-2">
-                    @include('errors/visualize_error')
+                    @include('errors\visualize_error')
                 </div>
-                <div class="ch_4">
+                <div class="ch_3 flex-column">
                     <div>
-                        <div class="form_panel">
+                        <div class="add_a_film_panel flex-row center">
                             <div id="fr_lf">
-                                <form id="submit_form" action="addafilm" method="POST" class="form-control"
+                                <form id="submit_form" action="add-a-film" method="POST" class="form-control"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <label for="name">نام فیلم:</label><br>
-                                    <input type="text" placeholder="نام فیلم" name="name"
-                                        value='{{ old('name') }}' class="form-control"><br>
-                                    <label for="duration">مدت زمان:</label><br>
+                                    <label for="name">
+                                        نام فیلم:
+                                    </label><br>
+                                    <input type="text" placeholder="نام فیلم" name="name" value='{{ old('name') }}'
+                                        class="form-control"><br>
+                                    <label for="duration">
+                                        مدت زمان فیلم:
+                                    </label><br>
                                     <input type="text" placeholder="مثلا: 1:35" name="duration"
                                         value='{{ old('duration') }}' class="form-control"><br>
-                                    <label for="director">نام کارگردان:</label><br>
+                                    <label for="director">
+                                        نام کارگردان:
+                                    </label><br>
                                     <input type="text" placeholder="نام کارگردان" name="director"
                                         value='{{ old('director') }}' class="form-control"><br>
-                                    <label for="ex_producer">نام تهیه کننده:</label><br>
+                                    <label for="ex_producer">
+                                        نام تهیه کننده:
+                                    </label><br>
                                     <input type="text" placeholder="نام تهیه کننده" name="ex_producer"
                                         value='{{ old('ex_producer') }}' class='form-control'><br>
-                                    <label for='about'>لینک اطلاعات بیشتر در مورد فیلم:</label><br>
-                                    <textarea style="text-align=left;" name="about" cols="30" rows="6" placeholder="..." class="form-control">{{ old('about') }}</textarea>
+                                    <label for='about'>
+                                        لینک اطلاعات بیشتر در مورد فیلم:
+                                    </label><br>
+                                    <textarea style="text-align=left;" name="about" cols="30" rows="6" placeholder="..."
+                                        class="form-control">{{ old('about') }}</textarea>
                             </div>
                             <div class='form-control' id="fr_rg">
-                                <label for="cny">کشور سازنده:</label><br>
-                                <input type="text" placeholder="کشور سازنده" name="cny"
-                                    value='{{ old('cny') }}' class="form-control"><br>
-                                <label for="language">زبان فیلم:</label><br>
-                                <input type="text" placeholder="زبان فیلم" name="language"
-                                    value='{{ old('language') }}' class="form-control"><br>
-                                <label for="price">قیمت (ریال):</label><br>
-                                <input type="text" placeholder="مثلا: 200000" name="price"
-                                    value='{{ old('price') }}' class="form-control"><br>
-                                <label for="ifr">لینک iframe-src فیلم :</label>
-                                <a href="https://jobteam.ir/ProductUser/540-YouTube-HTML"
-                                    style="font-family: vazir;">اطلاعات بیشتر...</a><br>
-                                <textarea maxlength="150" name="ifr" id="" cols="20" rows="5"
-                                    placeholder="www.youtube.com/embed/... :مثلا" class="form-control">{{ old('ifr') }}</textarea><br>
-                                <label for="file_">تصویر فیلم:</label><br>
-                                <input type="file" name="file_" value='{{ old('file_') }}'
+                                <label for="cny">
+                                    کشور سازنده:
+                                </label><br>
+                                <input type="text" placeholder="کشور سازنده" name="cny" value='{{ old('cny') }}'
                                     class="form-control"><br>
+                                <label for="language">
+                                    زبان فیلم:
+                                </label><br>
+                                <input type="text" placeholder="زبان فیلم" name="language" value='{{ old('language') }}'
+                                    class="form-control"><br>
+                                <label for="price">
+                                    قیمت (ریال):
+                                </label><br>
+                                <input type="text" placeholder="مثلا: 200000" name="price" value='{{ old('price') }}'
+                                    class="form-control"><br>
+                                <label for="ifr">
+                                    لینک iframe-src فیلم :
+                                </label>
+                                <a href="https://jobteam.ir/ProductUser/540-YouTube-HTML" style="font-family: vazir;">
+                                    اطلاعات بیشتر...
+                                </a><br>
+                                <textarea maxlength="150" name="ifr" id="" cols="20" rows="5"
+                                    placeholder="www.youtube.com/embed/... :مثلا"
+                                    class="form-control">{{ old('ifr') }}</textarea><br>
+                                <label for="file_">
+                                    تصویر فیلم:
+                                </label><br>
+                                <input type="file" name="file_" value='{{ old('file_') }}' class="form-control"><br>
                             </div>
                         </div>
                     </div>
@@ -74,15 +97,13 @@
                         </div>
                     </div>
                     <div>
-                        
-                        <div
-                            style="margin: 10px;
-                    border:1px solid rgb(68, 68, 68);
-                    width:98%;
-                    padding:15px;
-                    border-radius:20px;
-                    border-color:rgba(13, 10, 230, 0.671);
-                    font-size:20px;">
+                        <div style="margin: 10px;
+border:1px solid rgb(68, 68, 68);
+width:98%;
+padding:15px;
+border-radius:20px;
+border-color:rgba(13, 10, 230, 0.671);
+font-size:20px;">
                             جدول مکان برای فیلم:
                         </div>
                         <div class='bootstrap-table-1'>
@@ -110,8 +131,8 @@
                                 @foreach ($places as $place)
                                     <tr class='row_1'>
                                         <td>
-                                            <input type='checkbox' name="check[{{ $place->id }}]"
-                                                class='form-check' style='width:20px; height:20px;'>
+                                            <input type='checkbox' name="check[{{ $place->id }}]" class='form-check'
+                                                style='width:20px; height:20px;'>
                                         </td>
                                         <td>
                                             {{ $place->place_name }}
@@ -142,17 +163,30 @@
                                                     <p style='margin: 5px;'>
                                                         روز:
                                                     </p>
-                                                    <select name='day[{{ $place->id }}]' class='form-select'
-                                                        style='margin-bottom:20px;
-                                                background-color:rgba(193, 235, 255);
-                                                width:auto;height:40px;'>
-                                                        <option value='شنبه' >شنبه</option>
-                                                        <option value='یکشنبه'>یکشنبه</option>
-                                                        <option value='دوشنبه'>دوشنبه</option>
-                                                        <option value='سه شنبه'>سه شنبه</option>
-                                                        <option value='چهارشنبه'>چهارشنبه</option>
-                                                        <option value='پنجشنبه'>پنجشنبه</option>
-                                                        <option value='جمعه'>جمعه</option>
+                                                    <select name='day[{{ $place->id }}]' class='form-select' style='margin-bottom:20px;
+                                            background-color:rgba(193, 235, 255);
+                                            width:auto;height:40px;'>
+                                                        <option value='شنبه'>
+                                                            شنبه
+                                                        </option>
+                                                        <option value='یکشنبه'>
+                                                            یکشنبه
+                                                        </option>
+                                                        <option value='دوشنبه'>
+                                                            دوشنبه
+                                                        </option>
+                                                        <option value=' سه شنبه '>
+                                                            سه شنبه
+                                                        </option>
+                                                        <option value='چهارشنبه'>چهارشنبه
+                                                            چهارشنبه
+                                                        </option>
+                                                        <option value='پنجشنبه'>
+                                                            پنجشنبه
+                                                        </option>
+                                                        <option value='جمعه'>
+                                                            جمعه
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div style='display:flex; flex-direction:row;'>
@@ -160,10 +194,9 @@
                                                         ساعت:
                                                     </p>
                                                     <input multiple="" type='text' placeholder='زمان اکران'
-                                                        name='time[{{ $place->id }}]' class='form-control'
-                                                        style='margin-bottom:20px; 
-                                                    background-color:rgba(193, 235, 255);
-                                                    width:130px;height:40px;'><br>
+                                                        name='time[{{ $place->id }}]' class='form-control' style='margin-bottom:20px; 
+                                            background-color:rgba(193, 235, 255);
+                                            width:130px;height:40px;'><br>
                                                 </div>
                                             </div>
                                         </td>

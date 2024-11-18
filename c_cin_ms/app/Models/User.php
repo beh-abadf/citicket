@@ -24,9 +24,9 @@ class User extends Authenticatable
         'date_registered',
         'day_registered',
         'time_registered',
-        'date_loged_in',
-        'day_loged_in',
-        'time_loged_in',
+        'date_entered',
+        'day_entered',
+        'time_entered',
     ];
 
     /**

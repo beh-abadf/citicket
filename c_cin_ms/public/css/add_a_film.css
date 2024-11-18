@@ -1,18 +1,9 @@
-.bd_mn {
-    justify-content: center;
-    font-family: vazir;
-}
-
-.form_panel {
+.add_a_film_panel {
     justify-content: content;
     background-color: rgb(255, 255, 255);
     margin-top: 20px;
     padding-top: 20px;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    display: flex;
-    flex-direction: row;
     width: 1000px;
     height: auto;
     box-shadow: 2px 2px 10pxّ;
@@ -21,11 +12,11 @@
     box-shadow: 3px 3px 20px;
 }
 
-.add_a_film_panel>div>form>label {
+.add_a_film_panel > div > form > label {
     color: black;
 }
 
-.add_a_film_panel>div.end>label {
+.add_a_film_panel > div.end > label {
     color: black;
 }
 
@@ -39,13 +30,11 @@
     direction: rtl;
 }
 
-span>.form-select
-{
+span > .form-select {
     width: auto;
 }
 
-span
-{
+span {
     display: flex;
     justify-content: flex-start;
 }
@@ -59,24 +48,21 @@ span
     text-align: right;
 }
 
-#fr_lf
-{
+#fr_lf {
     width: 45%;
     margin: 10px;
 }
 
-#fr_rg
-{
-    width: 45%; 
+#fr_rg {
+    width: 45%;
     margin-bottom: 10px;
-
 }
 
 #mid {
     width: 100px;
 }
 
-.bootstrap-table-1>table {
+.bootstrap-table-1 > table {
     margin-top: 20px;
     text-align: center;
     justify-content: center;
@@ -85,7 +71,7 @@ span
     border-style: dotted;
 }
 
-.row_1>tr>th,
+.row_1 > tr > th,
 td {
     margin-top: 20px;
     text-align: center;

@@ -11,13 +11,17 @@ class Province extends Model
     use HasFactory;
 
     protected $fillable = [
-        'province_name', 'date_created',
-        'date_created', 'day_created',
-        'time_created', 'date_updated',
-        'day_updated', 'time_updated'
+        'province_name',
+        'date_created',
+        'date_created',
+        'day_created',
+        'time_created',
+        'date_updated',
+        'day_updated',
+        'time_updated'
     ];
 
-    protected function city():HasOne
+    protected function city(): HasOne
     {
         return $this->hasOne(Place::class, 'place_of_id');
     }

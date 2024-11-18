@@ -41,7 +41,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="confirmed_password" value="{{ old('confirmed_password') }}" autocomplete="new-password">
                             </div>
                         </div>
 

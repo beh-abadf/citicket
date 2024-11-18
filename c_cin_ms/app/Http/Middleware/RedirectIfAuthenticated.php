@@ -19,14 +19,10 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect()->back()->with('reg_al','شما قبلا وارد شده اید');
-            }
+        if (Auth::check()) {
+            return redirect()->back()->with('loged_in_alert', ' شما قبلا وارد شده اید .');
         }
-        
+
         return $next($request);
     }
 }

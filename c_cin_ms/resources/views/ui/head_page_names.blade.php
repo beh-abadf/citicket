@@ -5,7 +5,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark black">
         <div class="container">
-            <a class="navbar-brand" href="../filmsadmin"><strong>عنوان ها
+            <a class="navbar-brand" href="../films-admin"><strong>عنوان ها
                 </strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,18 +14,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li>
-                        <button class="button-free" onclick="window.location.href='../filmsadmin'">
+                        <button class="button-free" onclick="window.location.href='../films-admin'">
                             ادمین
                         </button>
                     </li>
                     <li>
-                        <button class="button-free" onclick="window.location.href='{{ route('login') }}'">
-                            ورود
+                        <button class="button-free" onclick="window.location.href='../user-signup'">
+                            ثبت نام
                         </button>
                     </li>
                     <li>
-                        <button class="button-free" onclick="window.location.href='{{ route('register') }}'">
-                            ثبت نام
+                        <button class="button-free" onclick="window.location.href='../user-login'">
+                            ورود
                         </button>
                     </li>
                     <li>
@@ -34,7 +34,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="button-free" onclick="window.location.href='../newsuser'">
+                        <button class="button-free" onclick="window.location.href='../news-user'">
                             اخبار
                         </button>
                     </li>

@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('date_registered');
             $table->string('day_registered');
             $table->string('time_registered');
-            $table->string('date_loged_in')->nullable();
-            $table->string('day_loged_in')->nullable();
-            $table->string('time_loged_in')->nullable();
+            $table->string('date_entered')->nullable();
+            $table->string('day_entered')->nullable();
+            $table->string('time_entered')->nullable();
             $table->timestamps();
         });
     }

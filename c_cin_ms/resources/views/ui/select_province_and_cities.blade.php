@@ -10,7 +10,7 @@
     </select>
     <label for="city" style='margin:5px;'> شهر:</label>
     <select id="city_selection" name="city" class="form-select"
-        style='margin-bottom:20px; background-color:rgba(193, 235, 255);'> 
-        <option>----------</option>                             
+        style='margin-bottom:20px; background-color:rgba(193, 235, 255);'>
+        <option>----------</option>
     </select>
 </span>

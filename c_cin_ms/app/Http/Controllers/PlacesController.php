@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 require_once 'php/jdf.php';
+require_once 'php/convert_to_persian.php';
 
 use App\Http\Controllers\Controller;
 use App\Models\City;
@@ -54,15 +55,15 @@ class PlacesController extends Controller
         $cities_array['city_data'] = $cities;
         return json_encode($cities_array);
     }
-    public function PlacesAdmin()
+    public function CinemasAdmin()
     {
         return $this->FirstConfiguration('places/places_admin');
     }
-    public function AddAPlaceFirstInit()
+    public function InitialValuesForTheCinemaAddition()
     {
         return $this->FirstConfiguration('places/add_a_place');
     }
-    public function AddAPlace(Request $input_request)
+    public function AddACinema(Request $input_request)
     {
         $this->Validate_($input_request);
         $fileName = '';
@@ -77,7 +78,7 @@ class PlacesController extends Controller
             'place_name' => $input_request['name'],
             'address' => $input_request['address'],
             'google_map_iframe' => $input_request['map'],
-            'capacity' => $input_request['capacity'],
+            'capacity' => convert_nums_persian($input_request['capacity']),
             'city_of_id' => $input_request['province'],
             'place_of_id' => $input_request['city'],
             'place_image_name' => $fileName,
@@ -86,9 +87,9 @@ class PlacesController extends Controller
             'day_created' => jdate('l'),
             'time_created' => jdate('g:i:s')
         ]);
-        return redirect('placesadmin');
+        return redirect('cinemas-admin');
     }
-    public function EditAPlace($id)
+    public function InitialValuesForTheCinemaEdition($id)
     {
         $rowHasBeenSelected = Place::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
@@ -101,11 +102,11 @@ class PlacesController extends Controller
         }
         return redirect('error');
     }
-    public function UpdateThePlaceInformation(Request $input_request, $id)
+    public function UpdateTheCinemaInformation(Request $input_request, $id)
     {
         $this->Validate_($input_request);
         $file_exists = $input_request['image_file'];
-        $information = Place::where('id', '=',  $id);
+        $information = Place::where('id', '=', $id);
         if ($file_exists != null) {
             $file = $input_request->file('image_file');
             $fileName = $file->getClientOriginalName();
@@ -118,7 +119,7 @@ class PlacesController extends Controller
             ->update([
                 'place_name' => $input_request['name'],
                 'address' => $input_request['address'],
-                'capacity' => $input_request['capacity'],
+                'capacity' => convert_nums_persian($input_request['capacity']),
                 'google_map_iframe' => $input_request['map'],
                 'city_of_id' => $input_request["province"],
                 'place_of_id' => $input_request['city'],
@@ -127,9 +128,9 @@ class PlacesController extends Controller
                 'day_updated' => jdate('l'),
                 'time_updated' => jdate('g:i:s')
             ]);
-        return redirect('placesadmin');
+        return redirect('cinemas-admin');
     }
-    public function DeleteAPlace($id)
+    public function DeleteACinema($id)
     {
         $rowHasBeenSelected = Place::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
@@ -138,6 +139,6 @@ class PlacesController extends Controller
             $rowHasBeenSelected->delete();
             return redirect()->back();
         }
-        return  redirect('error');
+        return redirect('error');
     }
 }

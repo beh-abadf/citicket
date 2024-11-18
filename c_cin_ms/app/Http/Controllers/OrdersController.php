@@ -13,6 +13,7 @@ use App\Models\Place;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// use Barryvdh\DomPDF\Facade\Pdf as Pdf;
 
 use function PHPUnit\Framework\isNull;
 
@@ -23,16 +24,19 @@ class OrdersController extends Controller
     {
         $this->orders = Order::all();
     }
+
     public function FirstConfiguration($name)
     {
         return view($name, [
             'orders' => $this->orders,
         ]);
     }
+
     public function OrdersAdmin()
     {
         return $this->FirstConfiguration('orders/orders_admin');
     }
+
     public function OrdersUser($id)
     {
         $tableData = Film::where('id', '=', $id)->get();
@@ -45,6 +49,7 @@ class OrdersController extends Controller
             'time_registered' => jdate('g:i:s'),
         ]);
     }
+
     public function BuyBill($film_id)
     {
 
@@ -54,7 +59,7 @@ class OrdersController extends Controller
         $comment_reverse = $comment->reverse();
         $informationId = json_decode($data[0]->film_of_ids);
         foreach ($informationId as $id => $value) {
-            $placeAr[] = (int)$value;
+            $placeAr[] = (int) $value;
         }
         $result = Place::select('*')->whereIn('id', $placeAr)->get();
         return view("orders/buy_bill", [
@@ -65,6 +70,7 @@ class OrdersController extends Controller
             'places' => $result,
         ]);
     }
+
     public function RegisterAnOrder($place_id)
     {
         $userId = Auth::user()->id;
@@ -84,6 +90,7 @@ class OrdersController extends Controller
         ]);
         return redirect('export-pdf/' . $place_id);
     }
+
     public function CreatePdfFile($place_id)
     {
         $film_id = session('film_id');
@@ -95,27 +102,27 @@ class OrdersController extends Controller
         $timeLoop = json_decode($filmInfo[0]->time);
         foreach ($salonLoop as $id => $value) {
             if ($id == $place_id) {
-                $salon =  $value;
+                $salon = $value;
             }
         }
-        if (!isNull()) {
+        //if (!isNull()) {
             foreach ($dayLoop as $id => $value) {
                 if ($id == $place_id) {
                     $day = $value;
                 }
             }
-        } else {
-            $day = "ندارد";
-        }
-        if (!isNull()) {
+       // } else {
+       //     $day = "ندارد";
+      //  }
+       // if (!isNull()) {
             foreach ($timeLoop as $id => $value) {
                 if ($id == $place_id) {
                     $time = $value;
                 }
             }
-        } else {
-            $time = "ندارد";
-        }
+       // } else {
+      //      $time = "ندارد";
+      //  }
         $placeInfo = Place::where('id', '=', $place_id)->get();
         return view('orders/take_bill', [
             "order" => $orderInfo,
@@ -125,12 +132,20 @@ class OrdersController extends Controller
             "time" => $time,
         ]);
     }
-    public function DeleteAnOrder($id)
+
+    // public function GeneratePdf(Request $input_request)
+    // {
+    //     $html = view('orders/take_bill')->render();
+    //     $pdf = Pdf::loadHTML($html);
+    //     return $pdf->download('Bill');
+    // }
+
+    public function DeleteTheOrder($id)
     {
         $rowHasBeenSelected = Order::where('id', '=', $id);
         if ($rowHasBeenSelected->exists()) {
             $rowHasBeenSelected->delete();
-            return redirect("ordersadmin");
+            return redirect("orders-admin");
         }
         return redirect('error');
     }
