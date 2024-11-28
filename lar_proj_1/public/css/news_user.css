@@ -1,0 +1,92 @@
+.parent > div.ch_2 {
+    position: relative;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.films_row {
+    position: relative;
+    flex: 1;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.films_row > li {
+    width: 250;
+}
+
+.crd {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30px;
+    align-items: center;
+    justify-content: center;
+    height: 330px;
+    width: 300px;
+    background: transparent;
+}
+
+.crd > div.d1 {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    background: transparent;
+}
+
+.crd > div.d1 img {
+    position: relative;
+    height: 250px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.d2_1 > p {
+    color: white;
+    font-size: 19px;
+}
+
+.crd > div.d2 {
+    position: relative;
+
+    height: 200px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.ch_3 {
+    background-color: black;
+    height: 200px;
+    width: 100%;
+}
+
+.ch_3_1 {
+    align-items: center;
+    height: 100%;
+    width: 20%;
+}
+
+.ch_3_1_1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 10%;
+    width: auto;
+    justify-content: center;
+}
+
+.ch_3_1_1 > p {
+    color: white;
+    font-family: vazir;
+    font-size: 20px;
+}
+
+.ch_3_1 > a {
+    margin-top: 25px;
+}
+
+p {
+    color: white;
+}

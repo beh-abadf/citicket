@@ -1,0 +1,41 @@
+@media print {
+    #btn-ptr {
+        display: none;
+    }
+}
+
+.parent > div:nth-child(1) {
+    width: 70%;
+    height: 100%;
+}
+
+#bill_panel {
+    height: 90%;
+    width: 100%;
+}
+
+#bill_panel > div {
+    height: 100%;
+}
+
+.pdf_c {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+h4 {
+    margin-top: 10px;
+    color: white;
+}
+
+.pdf_c > p:nth-child(1) {
+    margin-left: 50px;
+}
+
+#pdf_butt {
+    margin: 5px;
+}

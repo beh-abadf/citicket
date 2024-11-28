@@ -1,10 +1,16 @@
-1_ Import database for dummy data name it cin_db.
-2_ Fetch project.
-3_ Needs 'npm install' for node_modules.
-4_ Needs 'npm run dev' for login part and better experience.
-5_ Needs 'php artisan storage:link' for loading files.
+1_ Run server
+
+2_ Needs 'php artisan storage:link' for loading image files.
+if exists before, delete and run command again.
+
+3_ Make a mysql database and name it 'lar_proj_1_db' and import 'sql' file in dummy data folder.
+
+4_ For implementing 'fogetting password' 
+system on your local server needs stmp server configuration, username and app password in .env file.
+
+Note*: debug mode is off.
 
 //*******************
-6_ Debug mode is off.
 
-Behrang Abad Foomani
+
+Written and devoloped by Behrang Abad Foomani
