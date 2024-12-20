@@ -49,7 +49,7 @@
         <div class="row">
           <div class="col-lg-8 col-12 col-sm-10 offset-lg-2 offset-sm-1 text-danger">
             <h2>
-           ! را مطالعه بفرمایید Read me first خطای سمت سرور لطفا حتما فایل 
+           	! را مطالعه بفرمایید 'a_read_me_first' خطای سمت سرور لطفا حتما فایل 
             </h2>
           </div>
         </div>
