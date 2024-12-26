@@ -1,3 +1,5 @@
+0_ Run 'composer install' command for missing packages or files.
+
 1_ Run server
 
 2_ Needs 'php artisan storage:link' for loading image files.
