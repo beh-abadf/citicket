@@ -7,6 +7,9 @@ if exists before, delete and run command again.
 
 4_ For implementing 'fogetting password' system and other services, needs local server configuration in .env file! 
 
+5_ If there is no '.env' file make one with command 'cp .env.example  .env' and generate
+application key with command 'php artisan key:generate' and configure '.env' file with your local server configuration.
+
 Note*: debug mode is off.
 
 //*******************
